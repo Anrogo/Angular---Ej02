@@ -19,7 +19,7 @@ export class OfertasComponent implements OnInit {
     private router: Router,
   ) {
     //Title:
-    this._titleService.setTitle('Ofertas');
+    this._titleService.setTitle('Ofertas - Admin');
 
     //Data Array:
     this.ofertasArray = [];
@@ -49,11 +49,6 @@ export class OfertasComponent implements OnInit {
 
   public OfertaDelete(id: number): void {
     //Remove of the register with id through Home service
-  }
-
-  //Setter to change page's title althrough Browser Module
-  public setTitle(newTitle: string) {
-    this._titleService.setTitle(newTitle);
   }
 
 }

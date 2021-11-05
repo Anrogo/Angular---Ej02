@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Oferta } from 'src/app/models/oferta';
 import { HomeService } from 'src/app/services/home.service';
@@ -21,9 +22,11 @@ export class OfertaComponent implements OnInit {
     private _homeService: HomeService,
     private router: Router,
     private route: ActivatedRoute,
+    private _titleService: Title
   ) { 
     this.id = 0;
     this.numSolicitudes = 0;
+    this._titleService.setTitle('Detalles oferta');
   }
 
   ngOnInit(): void {

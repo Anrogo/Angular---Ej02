@@ -36,14 +36,14 @@ export class LoginComponent implements OnInit {
 
 
   public sendLogin(): void {
-
+    //Check if user field is empty and advise it
     if (this.user.trim().length > 0) {
       this.validateUser = false;
     } else {
       this.validateUser = true;
     }
-
-    if (this.password.length > 5) {
+    //Check if password field is empty and advise it
+    if (this.password.trim().length > 5) {
       this.validatePass = false;
     } else {
       this.validatePass = true;
@@ -53,15 +53,5 @@ export class LoginComponent implements OnInit {
   public validateEmail(event: any): void {
     const valueInput: string = event.target.value;
     this.msgUsuario = valueInput.trim();
-  }
-
-  public getUsersService(): void {
-    //console.log('Usuarios: ' + JSON.stringify(this.pruebaService.getUsers()));
-  }
-
-
-  //Setter to change page's title althrough Browser Module
-  public setTitle(newTitle: string) {
-    this._titleService.setTitle(newTitle);
   }
 }

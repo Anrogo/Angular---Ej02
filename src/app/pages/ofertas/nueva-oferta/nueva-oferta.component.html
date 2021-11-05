@@ -1,2 +1,83 @@
 <app-navbar></app-navbar>
-<p>nueva-oferta works!</p>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col divcenter">
+            <div>
+                <h2>NUEVA OFERTA DE TRABAJO</h2>
+            </div>
+            <p>
+                Rellene este formulario para crear la nueva oferta de empleo, recuerde completar adecuadamente los campos. Gracias por confiar en nosotros! 😄
+            </p>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <form class="row g-4" (ngSubmit)="onSubmit()" role="form" [formGroup]="ofertaForm">
+                <div class="alert alert-warning" *ngIf="!ofertaForm.valid">Revise todos los campos, todos son obligatorios.</div>
+                <div class="alert alert-info" *ngIf="ofertaForm.valid">Todos los campos son correctos, puede enviar el formulario de registro, gracias.
+                </div>
+                <div class="col-12">
+                    <div class="col input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-plus"></i></span>
+                        <input type="text" name="titulo" formControlName="titulo" class="form-control input-error" placeholder="Titulo" aria-describedby="basic-addon1" required />
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="col input-group">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-building"></i></span>
+                        <input type="text " name="empresa" formControlName="empresa" class="form-control input-error" placeholder="Empresa" aria-describedby="basic-addon2" required />
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-envelope"></i></span>
+                        <input type="email" name="email" formControlName="email" class="form-control input-error" placeholder="Email" aria-describedby="basic-addon3" required />
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3 "><i class="fa fa-map-marker"></i></span>
+                        <input type="text" name="ciudad" formControlName="ciudad" class="form-control input-error" placeholder="Ciudad" required />
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-euro"></i></span>
+                        <input type="number" name="salario" formControlName="salario" class="form-control" placeholder="salario" />
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon4 "><i class="fa fa-address-card-o"></i></span>
+                        <textarea name="descripcion" formControlName="descripcion" class="form-control" placeholder="Describa el puesto de trabajo para el que busca nuevos candidatos" aria-describedby="basic-addon4" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" name="checkbox" formControlName="checkbox" type="checkbox" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Acepto las
+                                <a href="#" class="link-primary">condiciones del servicio</a>
+                                ofrecido por EmpleoNg.</label>
+                    </div>
+                </div>
+                <div>
+                    <ng-template let-error let-text="text" #requiredError>
+                        <p class="error">{{ text }}</p>
+                    </ng-template>
+                    <ng-template let-error let-text="text" #passwordError>
+                        <p class="error">{{ text }}</p>
+                    </ng-template>
+                </div>
+                <div class="col-12 text-center">
+                    <input type="submit" [disabled]="!ofertaForm.valid" class="btn btn-success p-2 btn-block" value="Registrarme" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br /><br />
