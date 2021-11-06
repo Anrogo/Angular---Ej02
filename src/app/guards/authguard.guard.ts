@@ -10,12 +10,11 @@ import { LoginService } from '../services/login.service';
 export class AuthguardGuard implements CanActivate {
 
   usuario!: LoginModel | null;
-  token!: String | undefined;
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    return this.usuario != null; // Cambiar esto para saber si estoy logado.
   }
 
   constructor(
@@ -23,7 +22,6 @@ export class AuthguardGuard implements CanActivate {
   ) {
     this._loginService.login.subscribe(usuario => {
       this.usuario = usuario;
-      this.token = this.usuario?.token;
     });
    }
   
