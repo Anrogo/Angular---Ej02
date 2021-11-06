@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
         this.errorMsg = `⚠️ ¡No se ha podido iniciar la sesión! ${error?.error?.error}`;
         this.isLoading = false;
       });
+      //this.route.navigate(['/home']);
     }
   }
 }

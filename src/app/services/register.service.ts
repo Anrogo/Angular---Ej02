@@ -7,13 +7,15 @@ import { AppEndPoints } from '../endpoints.component';
 @Injectable()
 export class RegisterService {
 
-   
+   headers: HttpHeaders;
 
     constructor(
-        private _http: HttpClient
+        private http: HttpClient
     ) { 
-        //this.headers.append('Content-Type', 'application/json');
-        //this.headers.append('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYzNjIxMjk4Nn0.OkW62L5kRn6b6HNYoHNHK56xlyQQlFYAYwgEf6zu9vV2LxA2dEqqppGtaaiLa30CMhGEw1YHBHK7f2FKCKwwrQ');
+        this.headers = new HttpHeaders({
+            'Content-Type':'application/json',
+            'Authorization':'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYzNjMwMDM2Nn0.C4IkhNb1zo48HoUXN2jByBtQqjHWlulw6p2UUZ5kxG9xgC2jOOWKGAKnphIkKQBnYOmtPzrJESht__I4UEGQFw' 
+          });
     }
 
     sendNuevaOferta(oferta: OfertaModel): void {
@@ -25,8 +27,8 @@ export class RegisterService {
         let url = AppEndPoints.API;
         console.log(oferta);
         return this
-          ._http
-          .post<OfertaModel>(`${url}/api/ofertas`, oferta);
+          .http
+          .post<OfertaModel>(url+'/ofertas', oferta, {headers: {'Authorization':'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYzNjMwMDM2Nn0.C4IkhNb1zo48HoUXN2jByBtQqjHWlulw6p2UUZ5kxG9xgC2jOOWKGAKnphIkKQBnYOmtPzrJESht__I4UEGQFw'}});
     }
 
 /*

@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { HomeService } from 'src/app/services/home.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-oferta',
   templateUrl: './ofertas.component.html',
   styleUrls: ['./ofertas.component.css'],
-  providers: [HomeService]
+  providers: [HomeService, LoginService]
 })
 export class OfertasComponent implements OnInit {
 

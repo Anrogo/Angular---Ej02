@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthguardGuard } from './guards/authguard.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NuevaOfertaComponent } from './pages/ofertas/nueva-oferta/nueva-oferta.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'home/ofertas-admin',
-    component: OfertasComponent
+    component: OfertasComponent,
+    canActivate: [AuthguardGuard]
   },
   {
     path: 'home/ofertas/:id',

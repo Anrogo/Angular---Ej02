@@ -16,3 +16,7 @@
 .error {
     color: rgb(209, 23, 23);
 }
+
+.button {
+    margin-right: 16px
+}

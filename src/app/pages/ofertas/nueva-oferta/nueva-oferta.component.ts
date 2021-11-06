@@ -21,11 +21,11 @@ export class NuevaOfertaComponent implements OnInit {
    }
 
    ofertaForm = this.fb.group({
-      titulo: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(100)])],
-      descripcion: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(300)])],
-      empresa: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
+      titulo: ['', Validators.compose([ Validators.minLength(10), Validators.maxLength(100)])],
+      descripcion: ['', Validators.compose([ Validators.minLength(10), Validators.maxLength(300)])],
+      empresa: ['', Validators.compose([ Validators.maxLength(50)])],
       salario: ['', Validators.required],
-      ciudad: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
+      ciudad: ['', Validators.compose([ Validators.maxLength(50)])],
       email: ['', Validators.compose([Validators.email, Validators.required])],
       checkbox: ['', Validators.requiredTrue]
     });
@@ -34,7 +34,15 @@ export class NuevaOfertaComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this._registerService.registerOferta(this.generateNuevaOferta());
+    this._registerService
+    .registerOferta(this.generateNuevaOferta())
+    .subscribe(
+      respuesta => {
+        console.log(JSON.stringify(respuesta));
+      }, 
+      error => {
+        console.log(JSON.stringify(error));
+      });
   }
 
   public generateNuevaOferta(): OfertaModel {

@@ -5,9 +5,11 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PagesModule } from './pages/pages.module';
 import { ComponentsModule } from './components/components.module';
-import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { GuardsModule } from './guards/guards.module';
+import { InterceptorsModule } from './interceptors/interceptors.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthHttpInterceptor } from './interceptors/auth-http.interceptor';
 @NgModule({
   declarations: [
     AppComponent
@@ -17,11 +19,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     PagesModule,
     ComponentsModule,
-    HttpClientModule,
+    GuardsModule,
+    InterceptorsModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
