@@ -1,35 +1,47 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Oferta } from '../models/oferta';
-import { HttpClient} from '@angular/common/http';
+import { OfertaModel } from '../models/oferta.model';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { AppEndPoints } from '../endpoints.component';
 
 @Injectable()
 export class RegisterService {
 
+   
+
     constructor(
         private _http: HttpClient
     ) { 
         //this.headers.append('Content-Type', 'application/json');
-        //this.headers.append('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYzNjIwMjQ2MH0.NqCqcPgrOyoYu750Yu-PZC2q-44-AeOVhp2tk_gHYdLuOjlXNy4p3TXQxzVetgPjWWsN5rbWF1EAC8J3RZ4-9Q');
+        //this.headers.append('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYzNjIxMjk4Nn0.OkW62L5kRn6b6HNYoHNHK56xlyQQlFYAYwgEf6zu9vV2LxA2dEqqppGtaaiLa30CMhGEw1YHBHK7f2FKCKwwrQ');
     }
 
-    sendNuevaOferta(oferta: Oferta): void {
+    sendNuevaOferta(oferta: OfertaModel): void {
         console.log(oferta);
         this.registerOferta(oferta);
     }
 
-    registerOferta(oferta: Oferta): Observable<any> {
+    registerOferta(oferta: OfertaModel): Observable<OfertaModel> {
+        let url = AppEndPoints.API;
+        console.log(oferta);
+        return this
+          ._http
+          .post<OfertaModel>(`${url}/api/ofertas`, oferta);
+    }
+
+/*
+    registerOferta(oferta: Oferta): Observable<Oferta> {
         let url = AppEndPoints.API;
         return this._http
-          .post<any>(`${url}/api/ofertas`, oferta, 
+          .post<Oferta>(`${url}/api/ofertas`, JSON.stringify(oferta), 
           {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYzNjIwMjQ2MH0.NqCqcPgrOyoYu750Yu-PZC2q-44-AeOVhp2tk_gHYdLuOjlXNy4p3TXQxzVetgPjWWsN5rbWF1EAC8J3RZ4-9Q'
+                'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYzNjIxMjk4Nn0.OkW62L5kRn6b6HNYoHNHK56xlyQQlFYAYwgEf6zu9vV2LxA2dEqqppGtaaiLa30CMhGEw1YHBHK7f2FKCKwwrQ'
             }
         }
           );
     }
+*/
 
 }

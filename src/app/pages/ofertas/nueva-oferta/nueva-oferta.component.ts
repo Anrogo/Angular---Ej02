@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { Oferta } from 'src/app/models/oferta';
+import { OfertaModel } from 'src/app/models/oferta.model';
 import { RegisterService } from 'src/app/services/register.service';
 
 @Component({
@@ -34,11 +34,11 @@ export class NuevaOfertaComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this._registerService.sendNuevaOferta(this.generateNuevaOferta());
+    this._registerService.registerOferta(this.generateNuevaOferta());
   }
 
-  public generateNuevaOferta(): Oferta {
-    let value: Oferta = new Oferta();
+  public generateNuevaOferta(): OfertaModel {
+    let value: OfertaModel = new OfertaModel();
     value.titulo = this.ofertaForm.value.titulo;
     value.descripcion = this.ofertaForm.value.descripcion;
     value.empresa = this.ofertaForm.value.empresa;

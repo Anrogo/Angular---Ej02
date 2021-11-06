@@ -15,12 +15,12 @@ export class HomeService {
   }
 
   getOfertas(): Observable<any> {
-    let url = AppEndPoints.API + '/api/ofertas';
+    let url = AppEndPoints.API + '/ofertas';
     return this._http.get(url);
   }
 
   getOferta(id: number): Observable<any> {
-    let url = AppEndPoints.API + '/api/ofertas/' + id;
+    let url = AppEndPoints.API + '/ofertas/' + id;
     return this._http.get(url);
   }
 

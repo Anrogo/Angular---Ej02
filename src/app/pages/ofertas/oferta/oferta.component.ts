@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Oferta } from 'src/app/models/oferta';
+import { OfertaModel } from 'src/app/models/oferta.model';
 import { HomeService } from 'src/app/services/home.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class OfertaComponent implements OnInit {
   public id: any;
   public numSolicitudes: number;
 
-  public oferta = new Oferta();
+  public oferta = new OfertaModel();
 
   constructor(
     private _homeService: HomeService,
