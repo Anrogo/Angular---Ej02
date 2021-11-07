@@ -7,25 +7,9 @@ import { LoginService } from './services/login.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'Ejercicio02';
 
-  usuario!: LoginModel | null;
-
-  constructor(private loginService: LoginService) {
-    loginService.login.subscribe(usuario => this.usuario = usuario);
-  }
-
-  ngOnInit(): void {
-    this.loginService.login.subscribe(usuario => this.usuario = usuario);
-  }
-
-  hayUsuario(): boolean {
-    return this.usuario != null;
-  }
-
-  logout():void{
-    this.loginService.performLogout();
-  }
+  constructor() {}
 
 }

@@ -38,6 +38,7 @@ export class OfertasService {
 
     //New register
     registerOferta(oferta: OfertaModel): Observable<OfertaModel> {
+        this.getToken();
         let url = AppEndPoints.API;
         //console.log(oferta);
         return this

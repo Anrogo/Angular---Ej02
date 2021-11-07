@@ -31,7 +31,7 @@ export class LoginService {
         .http
         .post<LoginModel>(AppEndPoints.API+'/authenticate', data)
         .pipe(map(retornoAPI =>{
-            console.log('Login OK: ' + JSON.stringify(retornoAPI))
+            //console.log('Login OK: ' + JSON.stringify(retornoAPI))
             this.loginModelBehaviorSubject.next(retornoAPI);
             localStorage.setItem(LOGIN_KEY, JSON.stringify(retornoAPI));
             return retornoAPI;

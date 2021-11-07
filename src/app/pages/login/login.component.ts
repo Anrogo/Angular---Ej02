@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     });
   
     if (this.usuario != null) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home/ofertas-admin']);
     }
     
   }
