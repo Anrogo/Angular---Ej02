@@ -7,7 +7,6 @@ import { HomeComponent } from './home/home.component';
 import { OfertaComponent } from './ofertas/oferta/oferta.component';
 import { OfertasComponent } from './ofertas/ofertas.component';
 import { NuevaOfertaComponent } from './ofertas/nueva-oferta/nueva-oferta.component';
-import { AdminComponent } from './admin/admin.component';
 import { ComponentsModule } from '../components/components.module';
 
 
@@ -17,8 +16,7 @@ import { ComponentsModule } from '../components/components.module';
     HomeComponent,
     OfertasComponent,
     OfertaComponent,
-    NuevaOfertaComponent,
-    AdminComponent
+    NuevaOfertaComponent
   ],
   imports: [
     CommonModule,

@@ -7,8 +7,7 @@ import { HomeService } from 'src/app/services/home.service';
 @Component({
   selector: 'app-oferta',
   templateUrl: './oferta.component.html',
-  styleUrls: ['./oferta.component.css'],
-  providers: [HomeService]
+  styleUrls: ['./oferta.component.css']
 })
 export class OfertaComponent implements OnInit {
 

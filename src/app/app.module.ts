@@ -10,6 +10,7 @@ import { GuardsModule } from './guards/guards.module';
 import { InterceptorsModule } from './interceptors/interceptors.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthHttpInterceptor } from './interceptors/auth-http.interceptor';
+import { ServicesModule } from './services/services.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -23,6 +24,7 @@ import { AuthHttpInterceptor } from './interceptors/auth-http.interceptor';
     InterceptorsModule,
     FontAwesomeModule,
     NgbModule,
+    ServicesModule,
     HttpClientModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true}],

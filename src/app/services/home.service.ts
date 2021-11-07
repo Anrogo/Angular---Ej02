@@ -3,10 +3,10 @@ import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppEndPoints } from '../endpoints.component';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HomeService {
-
-
 
   constructor(
     private _http: HttpClient,
@@ -14,11 +14,12 @@ export class HomeService {
 
   }
 
+  //Get all records
   getOfertas(): Observable<any> {
     let url = AppEndPoints.API + '/ofertas';
     return this._http.get(url);
   }
-
+  //Get an record by id
   getOferta(id: number): Observable<any> {
     let url = AppEndPoints.API + '/ofertas/' + id;
     return this._http.get(url);

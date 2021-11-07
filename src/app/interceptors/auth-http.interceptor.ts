@@ -10,7 +10,9 @@ import { LoginModel } from '../models/login.model';
 import { LoginService } from '../services/login.service';
 import { finalize, tap } from "rxjs/operators";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthHttpInterceptor implements HttpInterceptor {
 
   usuario!: LoginModel | null;

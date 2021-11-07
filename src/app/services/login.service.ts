@@ -8,7 +8,9 @@ import {map} from "rxjs/operators";
 
 const LOGIN_KEY = 'login';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class LoginService {
 
     private loginModelBehaviorSubject: BehaviorSubject<LoginModel | null>;
@@ -18,26 +20,25 @@ export class LoginService {
         private http: HttpClient,
         private route: Router,
     ) { 
-        //Siempre que tengamos el token de login se cargará automáticamente
+        //As long as we have the login token, it will be loaded automatically
         this.loginModelBehaviorSubject = new BehaviorSubject<LoginModel | null>(JSON.parse(<string>localStorage.getItem(LOGIN_KEY)));
-        //Cargamos el observable de login
         this.login = this.loginModelBehaviorSubject.asObservable();
     }
 
-    //Hacemos login y guardamos en el almacenamiento local el token
+    //Do to log in and save the token in local storage
     performLogin(data: LoginModel): Observable<LoginModel> {
         return this
         .http
         .post<LoginModel>(AppEndPoints.API+'/authenticate', data)
         .pipe(map(retornoAPI =>{
-            //console.log('Login OK: ' + JSON.stringify(retornoAPI))
+            console.log('Login OK: ' + JSON.stringify(retornoAPI))
             this.loginModelBehaviorSubject.next(retornoAPI);
             localStorage.setItem(LOGIN_KEY, JSON.stringify(retornoAPI));
             return retornoAPI;
         }));
     } 
 
-    //Hacemos logout borrando el token almacenado
+    //Do to log out and remove the token
     performLogout(): void {
         localStorage.removeItem(LOGIN_KEY);
         this.loginModelBehaviorSubject.next(null);

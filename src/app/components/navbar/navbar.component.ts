@@ -12,19 +12,22 @@ export class NavbarComponent implements OnInit {
   usuario!: LoginModel | null;
 
   constructor(
-    private _loginService: LoginService,
+    private loginService: LoginService,
   ){
-    _loginService.login.subscribe(usuario => this.usuario = usuario);
+    this.loginService.login.subscribe(usuario => this.usuario = usuario);
+  }
+
+   ngOnInit(): void {
+    this.loginService.login.subscribe(usuario => this.usuario = usuario);
    }
 
-   ngOnInit(): void {}
-
    hayUsuario(): boolean{
+    //console.log(this.usuario);
     return this.usuario != null;
    }
 
    logout(): void {
-     this._loginService.performLogout();
+     this.loginService.performLogout();
    }
 
 }

@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { OfertaModel } from 'src/app/models/oferta.model';
-import { RegisterService } from 'src/app/services/register.service';
+import { OfertasService } from 'src/app/services/ofertas.service';
+
 
 @Component({
   selector: 'app-nueva-oferta',
   templateUrl: './nueva-oferta.component.html',
-  styleUrls: ['./nueva-oferta.component.css'],
-  providers: [RegisterService]
+  styleUrls: ['./nueva-oferta.component.css']
 })
 export class NuevaOfertaComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private _registerService: RegisterService,
+    private _ofertasService: OfertasService,
     private _titleService: Title,
+    private router: Router,
   ) {
     this._titleService.setTitle('Nueva oferta');
    }
@@ -34,11 +36,11 @@ export class NuevaOfertaComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this._registerService
-    .registerOferta(this.generateNuevaOferta())
+    this._ofertasService.registerOferta(this.generateNuevaOferta())
     .subscribe(
       respuesta => {
         console.log(JSON.stringify(respuesta));
+        this.router.navigate(['/home/ofertas-admin']);
       }, 
       error => {
         console.log(JSON.stringify(error));
