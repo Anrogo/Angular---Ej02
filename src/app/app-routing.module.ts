@@ -27,8 +27,9 @@ const routes: Routes = [
     component: OfertaComponent
   },
   {
-    path: 'nueva-oferta',
-    component: NuevaOfertaComponent
+    path: 'home/nueva-oferta',
+    component: NuevaOfertaComponent,
+    canActivate: [AuthguardGuard]
   },
   {
     path: 'login',

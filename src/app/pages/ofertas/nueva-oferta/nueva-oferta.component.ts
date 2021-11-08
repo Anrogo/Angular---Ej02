@@ -48,8 +48,8 @@ export class NuevaOfertaComponent implements OnInit {
         .subscribe(
           respuesta => {
             console.log(JSON.stringify(respuesta));
-            //this.router.navigate(['/home/ofertas-admin']);
             this.isLoading = false;
+            this.router.navigate(['/home/ofertas-admin']);
           },
           error => {
             console.log(JSON.stringify(error));
