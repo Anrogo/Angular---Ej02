@@ -12,7 +12,6 @@
                     <a class="nav-link" *ngIf="hayUsuario()" [routerLink]="['/home/ofertas-admin']">Ofertas</a>
                 </li>
             </ul>
-
         </div>
         <form class="form-inline my-2 my-lg-0">
             <button type="button" class="btn btn-outline-success my-2 my-sm-0 button" *ngIf="!hayUsuario()" [routerLink]="['/login']">Login</button>

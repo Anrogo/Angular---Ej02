@@ -24,8 +24,8 @@ export class OfertasService {
     }
     //Method to get the token, that will validate the operations with the API
     getToken(): void {
-        console.log(JSON.parse(<string>localStorage.getItem('login'))['id_token']);
-        this.token = JSON.parse(<string>localStorage.getItem('login'))['id_token'];
+        this.token = JSON.parse(<string>localStorage.getItem(LOGIN_KEY))['id_token'];
+        console.log(this.token);
         if (this.token != null) {
             this.headers = new HttpHeaders({
                 'Content-Type': 'application/json',
