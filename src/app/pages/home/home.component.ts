@@ -1,7 +1,7 @@
+import { HomeService } from './../../services/home.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HomeService } from 'src/app/services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -36,6 +36,12 @@ export class HomeComponent implements OnInit {
     this._homeService.getOfertas().subscribe(
       response => {
         this.ofertasArray = response;
+        //console.log('Ofertas: ' + this.ofertasArray);
+        if(this.ofertasArray.length == 0){
+          //console.log('No hay ofertas disponibles');
+          this.ofertasArray = this._homeService.getExampleData();
+          //console.log('Ofertas: ' + JSON.stringify(this.ofertasArray));
+        }
       },
       error => {
         console.log('Error ' + JSON.stringify(error));
